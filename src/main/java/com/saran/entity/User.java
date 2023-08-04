@@ -16,18 +16,21 @@ public class User {
 	private int id;
 	@Column(name = "UserName", nullable = false)
 	private String userName;
-	
-	@Column(name = "Email", nullable = false, unique = true )
+
+	@Column(name = "Email", nullable = false, unique = true)
 	private String email;
 
 	@Column(name = "Password", nullable = false)
 	private String password;
-	
+
 	@Column(name = "MobileNumber", nullable = false)
 	private String mobile;
 
 	@Column(name = "City", nullable = false)
 	private String city;
+
+	@Column(name = "role", nullable = false)
+	private String role;
 
 	public int getId() {
 		return id;
@@ -76,7 +79,13 @@ public class User {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
-	
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 }

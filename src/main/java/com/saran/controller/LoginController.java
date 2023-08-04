@@ -1,8 +1,10 @@
 package com.saran.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.saran.dto.ResponseDTO;
@@ -13,6 +15,8 @@ import com.saran.service.JwtService;
 import com.saran.service.UserService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("api")
 public class LoginController {
 
 	@Autowired
@@ -50,7 +54,7 @@ public class LoginController {
 
 		loginRepo.save(login);
 
-		response.setStatusCode("Succeess - 200");
+		response.setStatusCode("Success - 200");
 		response.setMessage("User Login Successfully");
 		response.setToken(login.getToken());
 		return response;
