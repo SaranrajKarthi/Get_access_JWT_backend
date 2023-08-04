@@ -1,5 +1,8 @@
 package com.saran.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,6 +60,19 @@ public class LoginController {
 		response.setStatusCode("Success - 200");
 		response.setMessage("User Login Successfully");
 		response.setToken(login.getToken());
+		response.setLinks(getLinks(user));
 		return response;
+	}
+	
+	private List<String> getLinks(User user){
+		List<String> links = new ArrayList<>();
+		if("ADMIN".equals(user.getRole())) {
+			links.add("/dashboard");
+			links.add("/users");
+		}else {
+			links.add("/dashboard");
+			links.add("/profile");
+		}
+		return links;
 	}
 }

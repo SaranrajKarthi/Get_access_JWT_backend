@@ -1,5 +1,7 @@
 package com.saran.dto;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -12,6 +14,8 @@ public class ResponseDTO {
 	private String error;
 
 	private String message;
+
+	private List<String> links;
 
 	public String getStatusCode() {
 		return statusCode;
@@ -43,6 +47,14 @@ public class ResponseDTO {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public List<String> getLinks() {
+		return links;
+	}
+
+	public void setLinks(List<String> links) {
+		this.links = links;
 	}
 
 }
