@@ -31,7 +31,12 @@ public class RegisterController {
 		}
 		userService.saveUser(user);
 		response.setStatusCode("Success - 200");
-		response.setMessage("User Created Successfully");
+		if("USER".equals(user.getRole())) {
+			response.setMessage("User Account Created Successfully");			
+		}else if("ADMIN".equals(user.getRole())){
+			response.setMessage("Admin Account Created Successfully");
+		}
+		
 		return response;
 	}
 }

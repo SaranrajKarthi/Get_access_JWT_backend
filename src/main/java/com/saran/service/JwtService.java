@@ -22,7 +22,7 @@ public class JwtService {
 
 	private String createToken(Map<String, Object> claims, String email) {
 		return Jwts.builder().setClaims(claims).setSubject(email).setIssuedAt(new Date(System.currentTimeMillis()))
-//						.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30))
+						.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 5))
 						.signWith(SignatureAlgorithm.HS512, SECRET).compact();
 	}
 
