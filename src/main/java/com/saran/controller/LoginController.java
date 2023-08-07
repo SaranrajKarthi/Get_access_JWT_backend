@@ -1,7 +1,9 @@
 package com.saran.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -69,20 +71,48 @@ public class LoginController {
 
 		}
 		response.setToken(login.getToken());
-		response.setLinks(getLinks(user));
+		response.setLinksAndNames(getLinksAndNames(user));
+//		response.setLinks(getLinks(user));
+//		response.setLinksName(getLinksNames(user));
 		return response;
 	}
+	private Map<String, String> getLinksAndNames(User user) {
+        Map<String, String> linksAndNames = new HashMap<>();
+        User logedUser = userService.getUserByEmail(user.getEmail());
 
-	private List<String> getLinks(User user) {
-		List<String> links = new ArrayList<>();
-		
-		if ("ADMIN".equals(user.getRole())) {
-			links.add("/menu/dashboard");
-			links.add("/menu/users");
-		} else {
-			links.add("/menu/dashboard");
-			links.add("/menu/profile");
-		}
-		return links;
-	}
+        if ("ADMIN".equals(logedUser.getRole())) {
+            linksAndNames.put("/menu/dashboard", "Dashboard");
+            linksAndNames.put("/menu/users", "Users");
+        } else {
+            linksAndNames.put("/menu/dashboard", "Dashboard");
+            linksAndNames.put("/menu/profile", "Profile");
+            linksAndNames.put("/menu/product", "Add Products");
+        }
+        return linksAndNames;
+    }
+
+//	private List<String> getLinks(User user) {
+//		List<String> links = new ArrayList<>();
+//		
+//		if ("ADMIN".equals(user.getRole())) {
+//			links.add("/menu/dashboard");
+//			links.add("/menu/users");
+//		} else {
+//			links.add("/menu/dashboard");
+//			links.add("/menu/profile");
+//		}
+//		return links;
+//	}
+//	private List<String> getLinksNames(User user) {
+//		List<String> pageNames = new ArrayList<>();
+//		
+//		if ("ADMIN".equals(user.getRole())) {
+//			pageNames.add("Dashboard");
+//			pageNames.add("Users");
+//		} else {
+//			pageNames.add("Dashboard");
+//			pageNames.add("Profile");
+//		}
+//		return pageNames;
+//	}
 }
