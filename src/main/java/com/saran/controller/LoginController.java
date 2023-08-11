@@ -71,24 +71,48 @@ public class LoginController {
 
 		}
 		response.setToken(login.getToken());
-		response.setLinksAndNames(getLinksAndNames(user));
+		response.setLinksAndNames(getPageLinkDetails(user));
 //		response.setLinks(getLinks(user));
 //		response.setLinksName(getLinksNames(user));
 		return response;
 	}
-	private Map<String, String> getLinksAndNames(User user) {
-        Map<String, String> linksAndNames = new HashMap<>();
+	private List<Map<String, Object>> getPageLinkDetails(User user) {
+        List<Map<String, Object>> sideNaveLinks = new ArrayList<>();
         User logedUser = userService.getUserByEmail(user.getEmail());
 
         if ("ADMIN".equals(logedUser.getRole())) {
-            linksAndNames.put("/menu/dashboard", "Dashboard");
-            linksAndNames.put("/menu/users", "Users");
+        	Map<String, Object> dashboardLink = new HashMap<>();
+            dashboardLink.put("link", "/menu/dashboard");
+            dashboardLink.put("name", "Dashboard");
+            dashboardLink.put("icon", "<i class=\"bi bi-speedometer\"></i>");
+            sideNaveLinks.add(dashboardLink);
+
+            Map<String, Object> usersLink = new HashMap<>();
+            usersLink.put("link", "/menu/users");
+            usersLink.put("name", "Users");
+            usersLink.put("icon", "<i class=\"bi bi-people-fill\"></i>");
+            sideNaveLinks.add(usersLink);
         } else {
-            linksAndNames.put("/menu/dashboard", "Dashboard");
-            linksAndNames.put("/menu/profile", "Profile");
-            linksAndNames.put("/menu/product", "Add Products");
+        	Map<String, Object> dashboardLink = new HashMap<>();
+            dashboardLink.put("link", "/menu/dashboard");
+            dashboardLink.put("name", "Dashboard");
+            dashboardLink.put("icon", "dashboard-icon.png");
+            sideNaveLinks.add(dashboardLink);
+
+            Map<String, Object> profileLink = new HashMap<>();
+            profileLink.put("link", "/menu/profile");
+            profileLink.put("name", "Profile");
+            profileLink.put("icon", "<i class=\"bi bi-person-fill\"></i>");
+            sideNaveLinks.add(profileLink);
+
+            Map<String, Object> productLink = new HashMap<>();
+            productLink.put("link", "/menu/product");
+            productLink.put("name", "Add Products");
+            productLink.put("icon", "<i class=\"bi bi-folder-plus\"></i>");
+            sideNaveLinks.add(productLink);
+
         }
-        return linksAndNames;
+        return sideNaveLinks;
     }
 
 //	private List<String> getLinks(User user) {

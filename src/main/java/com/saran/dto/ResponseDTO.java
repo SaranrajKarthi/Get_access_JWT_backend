@@ -19,7 +19,7 @@ public class ResponseDTO {
 	private List<String> links;
 
 	private List<String> linksName;
-    private Map<String, String> linksAndNames;
+    private List<Map<String, Object>> linksAndNames;
 
 
 	public String getStatusCode() {
@@ -70,12 +70,12 @@ public class ResponseDTO {
 		this.linksName = linksName;
 	}
 
-	public Map<String, String> getLinksAndNames() {
+	public List<Map<String, Object>> getLinksAndNames() {
 		return linksAndNames;
 	}
 
-	public void setLinksAndNames(Map<String, String> linksAndNames) {
-		this.linksAndNames = linksAndNames;
+	public void setLinksAndNames(List<Map<String, Object>> list) {
+		this.linksAndNames = list;
 	}
 	
 	
