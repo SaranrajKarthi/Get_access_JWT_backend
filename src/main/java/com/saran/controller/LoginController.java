@@ -84,31 +84,32 @@ public class LoginController {
         	Map<String, Object> dashboardLink = new HashMap<>();
             dashboardLink.put("link", "/menu/dashboard");
             dashboardLink.put("name", "Dashboard");
-            dashboardLink.put("icon", "<i class=\"bi bi-speedometer\"></i>");
+            dashboardLink.put("icon", "bi bi-speedometer");
+//            dashboardLink.put("icon", "<i class=\"bi bi-speedometer\"></i>");
             sideNaveLinks.add(dashboardLink);
 
             Map<String, Object> usersLink = new HashMap<>();
             usersLink.put("link", "/menu/users");
             usersLink.put("name", "Users");
-            usersLink.put("icon", "<i class=\"bi bi-people-fill\"></i>");
+            usersLink.put("icon", "bi bi-people-fill");
             sideNaveLinks.add(usersLink);
         } else {
         	Map<String, Object> dashboardLink = new HashMap<>();
             dashboardLink.put("link", "/menu/dashboard");
             dashboardLink.put("name", "Dashboard");
-            dashboardLink.put("icon", "dashboard-icon.png");
+            dashboardLink.put("icon", "bi bi-speedometer");
             sideNaveLinks.add(dashboardLink);
 
             Map<String, Object> profileLink = new HashMap<>();
             profileLink.put("link", "/menu/profile");
             profileLink.put("name", "Profile");
-            profileLink.put("icon", "<i class=\"bi bi-person-fill\"></i>");
+            profileLink.put("icon", "bi bi-person-fill");
             sideNaveLinks.add(profileLink);
 
             Map<String, Object> productLink = new HashMap<>();
             productLink.put("link", "/menu/product");
             productLink.put("name", "Add Products");
-            productLink.put("icon", "<i class=\"bi bi-folder-plus\"></i>");
+            productLink.put("icon", "bi bi-folder-plus");
             sideNaveLinks.add(productLink);
 
         }
